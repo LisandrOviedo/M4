@@ -7,11 +7,17 @@ module.exports = (sequelize) => {
       code: {
         type: DataTypes.STRING(5),
         primaryKey: true,
+        validate: {
+          notIn: [["HENRY", "henry"]],
+        },
       },
       name: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
+        validate: {
+          notIn: [["Henry", "SoyHenry", "Soy Henry"]],
+        },
       },
       age: {
         type: DataTypes.INTEGER,
