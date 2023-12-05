@@ -8,7 +8,14 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(5),
         primaryKey: true,
         validate: {
-          notIn: [["HENRY", "henry"]],
+          validaPalabraProhibida(value) {
+            if (
+              value.toLowerCase() === "henry" ||
+              value.toUpperCase() === "HENRY"
+            ) {
+              throw new Error("Pabra Prohibida");
+            }
+          },
         },
       },
       name: {
