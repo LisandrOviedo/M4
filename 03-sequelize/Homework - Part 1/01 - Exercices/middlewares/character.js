@@ -83,10 +83,10 @@ router.put("/:attribute", async (req, res) => {
 
   try {
     await Character.update(
-      { attribute: value },
+      { [attribute]: value },
       {
         where: {
-          attribute: null,
+          [attribute]: null,
         },
       }
     );
